@@ -32,6 +32,20 @@ class AuthController {
     
   }
 
+  async profile ({auth, response }) {
+    const user  = await auth.getUser();
+
+    return response.json(user);
+  }
+
+  async revokeUserToken ({ auth, response }) {
+
+    const user  = await auth.getUser();
+    await user.tokens().update({is_revoked: true});
+
+    return response.status(204).json(null);
+  }
+
   
 
 

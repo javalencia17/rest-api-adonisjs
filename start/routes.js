@@ -28,9 +28,17 @@ Route.group(() => {
     //     ['Books.update' , 'UpdateBook'],
     // ]));
     Route.resource('Books','BookController').middleware(['auth:api']);
+    
+
+    Route.get('profile','AuthController.profile').middleware(['auth:api']);
+
+    Route.get('revokeUserToken','AuthController.revokeUserToken').middleware(['auth:api'])
 
 }).prefix('api/v1');
 
 Route.group(() => {
+    Route.resource('Books','V2/BookController').middleware(['auth:api']);
+
+    Route.get('books/paginated/:offset','V2/BookController.paginated').middleware(['auth:api']);
 
 }).prefix('api/v2');

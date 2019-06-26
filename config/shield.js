@@ -138,8 +138,8 @@ module.exports = {
       '/api/v1/register',
       '/api/v1/login',
       '/api/v1/books',
-      '/api/v1/books:id'
-
+      '/api/v1/books/:id',
+      '/api/v1/revokeUserToken'
     ],
     cookieOptions: {
       httpOnly: false,
